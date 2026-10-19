@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python Projects for Beginners to Build a Developer Portfolio</title>
+<meta name="description" content="Seven beginner Python projects with code, a sixty day plan and portfolio tips. Play the guessing game, explore the projects and start building.">
+<meta name="keywords" content="python projects for beginners, python project ideas, python projects for resume, developer portfolio, beginner project for python">
+<meta property="og:title" content="Python Projects for Beginners to Build a Developer Portfolio">
+<meta property="og:description" content="Seven projects, one sixty day plan and a playable Python game. Build a portfolio that gets opened.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%233776AB'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%23FFD43B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#3776AB; --navy:#1D3F63; --deep:#122B45; --yellow:#FFD43B; --sun:#FFE88A;
+  --paper:#F4F8FC; --card:#FFFFFF; --ink:#16293D; --muted:#51657A; --line:#D5E1EC;
+  --display:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--display);background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(18,43,69,.94);backdrop-filter:blur(8px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:18px}
+.logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--blue) 50%,var(--yellow) 50%);display:grid;place-items:center;font-family:var(--mono);font-size:13px;color:#fff;font-weight:700}
+nav ul{display:flex;gap:6px;list-style:none}
+nav a{color:#D7E6F5;text-decoration:none;padding:8px 12px;border-radius:999px;font-size:15px}
+nav a:hover{background:rgba(255,255,255,.1);color:#fff}
+.nav .btn-s{background:var(--yellow);color:var(--deep);font-weight:800;padding:9px 16px;border-radius:999px;text-decoration:none;font-size:15px}
+
+/* hero */
+.hero{background:var(--blue);color:#fff;position:relative;overflow:hidden;padding:72px 0 96px}
+.hero:before{content:"";position:absolute;right:-160px;top:-160px;width:520px;height:520px;border-radius:50%;background:var(--yellow);opacity:.95}
+.hero:after{content:"";position:absolute;left:-120px;bottom:-200px;width:420px;height:420px;border-radius:50%;background:var(--navy)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+h1{font-size:clamp(38px,6vw,68px);line-height:1.02;font-weight:800;letter-spacing:-.02em}
+.hero p.lead{margin:20px 0 28px;font-size:19px;color:#E6F0FA;max-width:30em}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:14px 22px;border-radius:14px;font-weight:800;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-y{background:var(--yellow);color:var(--deep)}
+.btn-o{border:2px solid rgba(255,255,255,.7);color:#fff}
+.stats{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap;color:#DCEAF7;font-size:15px}
+.stats b{display:block;font-size:26px;color:#fff}
+
+/* game */
+.term{background:var(--deep);border-radius:18px;box-shadow:0 24px 50px rgba(8,22,38,.45);overflow:hidden;font-family:var(--mono);font-size:14px;color:#D8E8F7}
+.term-bar{display:flex;align-items:center;gap:7px;padding:12px 14px;background:#0C2035;font-size:12px;color:#8FB0CC}
+.dot{width:11px;height:11px;border-radius:50%}
+.term-body{padding:18px;min-height:250px;display:flex;flex-direction:column;gap:6px}
+#log{flex:1;max-height:200px;overflow:auto;display:flex;flex-direction:column;gap:4px}
+#log .you{color:var(--sun)} #log .ok{color:#8FE3A8} #log .hint{color:#9CC4E8}
+.gform{display:flex;gap:8px;margin-top:8px}
+.gform input{flex:1;min-width:0;background:#0C2035;border:1px solid #2B4C6D;color:#fff;border-radius:10px;padding:11px 12px;font-family:var(--mono);font-size:15px}
+.gform button{background:var(--yellow);border:0;border-radius:10px;padding:0 16px;font-weight:700;font-family:var(--mono);cursor:pointer;color:var(--deep)}
+
+section{padding:84px 0}
+h2{font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-.015em;font-weight:800;max-width:17em}
+.sub{color:var(--muted);margin:14px 0 36px;max-width:36em}
+
+/* explorer */
+.explorer{display:grid;grid-template-columns:260px 1fr;gap:22px}
+.tabs{display:flex;flex-direction:column;gap:8px}
+.tab{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:14px;padding:13px 15px;font:inherit;font-weight:600;color:var(--ink);cursor:pointer;transition:.15s}
+.tab:hover{border-color:var(--blue)}
+.tab[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#fff;transform:translateX(6px)}
+.panel{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:28px}
+.panel h3{font-size:28px;line-height:1.15}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tag{background:var(--sun);color:var(--deep);border-radius:999px;padding:4px 12px;font-size:14px;font-weight:600}
+.tag.b{background:#DCEBF8;color:var(--navy)}
+.panel p{color:var(--muted);margin-bottom:14px}
+pre{background:var(--deep);color:#DDEBFA;border-radius:14px;padding:16px;overflow-x:auto;font-family:var(--mono);font-size:13.5px;line-height:1.6}
+.k{color:var(--yellow)} .s{color:#9FE0B5} .c{color:#7C9BB8}
+
+/* plan */
+.plan{background:var(--navy);color:#fff}
+.plan .sub{color:#C5D8EB}
+.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.week{background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.14);border-radius:18px;padding:20px;cursor:pointer;display:block;transition:.15s}
+.week:hover{border-color:var(--yellow)}
+.week input{position:absolute;opacity:0}
+.week .chk{width:26px;height:26px;border-radius:8px;border:2px solid var(--sun);display:inline-grid;place-items:center;margin-bottom:12px;font-weight:800;color:transparent}
+.week input:checked + .chk{background:var(--yellow);color:var(--deep)}
+.week input:checked ~ h3{text-decoration:line-through;text-decoration-color:var(--yellow)}
+.week input:focus-visible + .chk{outline:3px solid #fff}
+.week h3{font-size:19px;margin-bottom:6px}
+.week p{font-size:15px;color:#CFE0F0}
+#meter{height:12px;background:rgba(255,255,255,.15);border-radius:99px;margin-top:28px;overflow:hidden}
+#bar{height:100%;width:0;background:var(--yellow);transition:width .4s}
+#msg{margin-top:10px;color:var(--sun);font-weight:600}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:24px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:.18s}
+.card:hover{border-color:var(--blue);transform:translateY(-5px) rotate(-.4deg);box-shadow:0 14px 0 -6px var(--yellow)}
+.card small{color:var(--blue);font-weight:800}
+.card h3{font-size:21px;line-height:1.2}
+.card p{color:var(--muted);font-size:15.5px;flex:1}
+.card span{font-weight:800;color:var(--navy)}
+.card.big{background:var(--yellow);border-color:var(--yellow)}
+.card.big p,.card.big small{color:var(--deep)}
+
+.final{background:var(--yellow);text-align:center;padding:76px 0}
+.final h2{margin:0 auto;color:var(--deep)}
+.final p{margin:14px auto 26px;max-width:30em;color:#3A3510}
+.final .btn-d{background:var(--deep);color:#fff}
+
+footer{background:var(--deep);color:#B9CEE2;padding:44px 0;font-size:15px}
+.fgrid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px}
+footer a{color:#fff;text-decoration:none;display:block;padding:3px 0}
+footer a:hover{color:var(--yellow)}
+.copy{margin-top:28px;padding-top:18px;border-top:1px solid #29496A;font-size:13.5px}
+
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .explorer{grid-template-columns:1fr}
+  .tabs{flex-direction:row;overflow-x:auto;padding-bottom:6px}
+  .tab{white-space:nowrap}
+  .tab[aria-selected="true"]{transform:none}
+  .weeks{grid-template-columns:1fr 1fr}
+  nav ul{display:none}
+}
+@media(max-width:520px){.weeks{grid-template-columns:1fr} section{padding:60px 0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="logo">py</span>Portfolio Lab</a>
+    <nav aria-label="Main"><ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#plan">60 day plan</a></li>
+      <li><a href="#learn">Learn live</a></li>
+      <li><a href="#reads">Reads</a></li>
+    </ul></nav>
+    <a class="btn-s" href="https://www.justacademy.co/register-for-course-demo" target="_blank" rel="noopener">Free demo</a>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Nobody hires a tutorial. Build the thing.</h1>
+      <p class="lead">Seven beginner Python projects that turn "I finished a course" into a portfolio a recruiter can open, run and remember. Start by beating the game on the right.</p>
+      <div class="cta-row">
+        <a class="btn btn-y" href="#projects">Pick a project</a>
+        <a class="btn btn-o" href="https://www.justacademy.co/blog-detail/python-projects-for-beginners-to-build-a-developer-portfolio" target="_blank" rel="noopener">Read the full guide</a>
+      </div>
+      <div class="stats">
+        <div><b>7</b>starter projects</div>
+        <div><b>60</b>day plan</div>
+        <div><b>3</b>repos that matter</div>
+      </div>
+    </div>
+    <div class="term" aria-label="Number guessing game">
+      <div class="term-bar"><span class="dot" style="background:#FF6B6B"></span><span class="dot" style="background:var(--yellow)"></span><span class="dot" style="background:#6BE39A"></span>&nbsp; guess.py</div>
+      <div class="term-body">
+        <div id="log" aria-live="polite"></div>
+        <form class="gform" id="gf">
+          <input id="gi" type="number" min="1" max="100" placeholder="your guess (1 to 100)" aria-label="Your guess" required>
+          <button type="submit">run</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Seven projects, each small enough to finish</h2>
+    <p class="sub">Choose a tab. Every project teaches one new idea and gives you something honest to put on GitHub and your resume.</p>
+    <div class="explorer">
+      <div class="tabs" role="tablist" aria-label="Python projects" id="tabs"></div>
+      <div class="panel" id="panel" role="tabpanel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section id="plan" class="plan">
+  <div class="wrap">
+    <h2>Sixty days, four checkpoints</h2>
+    <p class="sub">Tick a checkpoint when you really finish it. Your progress stays in this browser.</p>
+    <div class="weeks" id="weeks"></div>
+    <div id="meter"><div id="bar"></div></div>
+    <p id="msg"></p>
+  </div>
+</section>
+
+<section id="learn">
+  <div class="wrap">
+    <h2>Learn with a mentor beside you</h2>
+    <p class="sub">Feedback speeds everything up. These live online programs for Delhi learners pair instructor led and mentor led sessions with project work.</p>
+    <div class="grid">
+      <a class="card big" href="https://www.justacademy.co/course-detail/delhi/python-training-in-delhi" target="_blank" rel="noopener">
+        <small>Course</small><h3>Python Training in Delhi</h3>
+        <p>Live interactive Python sessions built around projects from week one.</p><span>View course</span></a>
+      <a class="card" href="https://www.justacademy.co/job-bootcamp-detail/delhi/full-stack-developer-pro-bootcamp-in-delhi-live-online-software-engineering-product-development-program" target="_blank" rel="noopener">
+        <small>Bootcamp</small><h3>Full Stack Developer Pro Bootcamp</h3>
+        <p>Move from small scripts to product level software engineering, live online.</p><span>View bootcamp</span></a>
+      <a class="card" href="https://www.justacademy.co/job-bootcamp-detail/delhi/data-analytics-bootcamp-in-delhi-live-online-business-analytics-training" target="_blank" rel="noopener">
+        <small>Bootcamp</small><h3>Data Analytics Bootcamp</h3>
+        <p>Take your CSV and chart projects into business analytics and real datasets.</p><span>View bootcamp</span></a>
+      <a class="card" href="https://www.justacademy.co/course-detail/pune/selenium-training-in-pune" target="_blank" rel="noopener">
+        <small>Course</small><h3>Selenium Training in Pune</h3>
+        <p>Python loves testing. Explore automation if careful checking is your thing.</p><span>View course</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="reads" style="padding-top:0">
+  <div class="wrap">
+    <h2>Keep reading</h2>
+    <p class="sub">Four short guides on projects, certificates and career paths.</p>
+    <div class="grid">
+      <a class="card" href="https://www.justacademy.co/blog-detail/python-projects-for-beginners-to-build-a-developer-portfolio" target="_blank" rel="noopener">
+        <small>Guide</small><h3>Python Projects for Beginners to Build a Developer Portfolio</h3>
+        <p>The full walkthrough behind this page, with ideas ordered by difficulty.</p><span>Read article</span></a>
+      <a class="card" href="https://www.justacademy.co/blog-detail/python-certification-guide-which-certificate-boosts-your-career-in-2026" target="_blank" rel="noopener">
+        <small>Careers</small><h3>Which Python Certificate Boosts Your Career</h3>
+        <p>When a credential helps and when your projects speak louder.</p><span>Read article</span></a>
+      <a class="card" href="https://www.justacademy.co/blog-detail/full-stack-python-developer-skills-django-react-database-guide" target="_blank" rel="noopener">
+        <small>Skills</small><h3>Full Stack Python Developer Skills</h3>
+        <p>Django, React and databases mapped for beginners.</p><span>Read article</span></a>
+      <a class="card" href="https://www.justacademy.co/blog-detail/top-it-certifications-that-help-freshers-get-jobs" target="_blank" rel="noopener">
+        <small>Freshers</small><h3>Top IT Certifications for Freshers</h3>
+        <p>A realistic look at credentials that open doors.</p><span>Read article</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="final">
+  <div class="wrap">
+    <h2>Open an empty file. Type the first line.</h2>
+    <p>Want to see a live session before you decide? Book a free demo class and watch how mentor led Python learning feels.</p>
+    <a class="btn btn-d" href="https://www.justacademy.co/register-for-course-demo" target="_blank" rel="noopener">Book a free demo</a>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><strong style="color:#fff;font-size:18px">Portfolio Lab</strong><p style="max-width:22em;margin-top:8px">Beginner Python projects that become a developer portfolio.</p></div>
+      <div><a href="https://www.justacademy.co/course-detail/delhi/python-training-in-delhi" target="_blank" rel="noopener">Python Training in Delhi</a>
+        <a href="https://www.justacademy.co/job-bootcamp-detail/delhi/full-stack-developer-pro-bootcamp-in-delhi-live-online-software-engineering-product-development-program" target="_blank" rel="noopener">Full Stack Developer Pro Bootcamp</a>
+        <a href="https://www.justacademy.co/job-bootcamp-detail/delhi/data-analytics-bootcamp-in-delhi-live-online-business-analytics-training" target="_blank" rel="noopener">Data Analytics Bootcamp</a>
+        <a href="https://www.justacademy.co/course-detail/pune/selenium-training-in-pune" target="_blank" rel="noopener">Selenium Training in Pune</a></div>
+      <div><a href="https://www.justacademy.co/blog-detail/python-projects-for-beginners-to-build-a-developer-portfolio" target="_blank" rel="noopener">Projects guide</a>
+        <a href="https://www.justacademy.co/blog-detail/python-certification-guide-which-certificate-boosts-your-career-in-2026" target="_blank" rel="noopener">Python certificates</a>
+        <a href="https://www.justacademy.co/blog-detail/full-stack-python-developer-skills-django-react-database-guide" target="_blank" rel="noopener">Full stack skills</a>
+        <a href="https://www.justacademy.co/blog-detail/top-it-certifications-that-help-freshers-get-jobs" target="_blank" rel="noopener">IT certifications</a>
+        <a href="https://www.justacademy.co/register-for-course-demo" target="_blank" rel="noopener">Free demo</a></div>
+    </div>
+    <p class="copy">Educational resource. Python is a trademark of the Python Software Foundation.</p>
+  </div>
+</footer>
+
+<script>
+/* guessing game */
+(function(){
+  var log=document.getElementById('log'),f=document.getElementById('gf'),i=document.getElementById('gi');
+  var secret,tries;
+  function say(t,c){var d=document.createElement('div');d.className=c||'';d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight}
+  function start(){secret=Math.floor(Math.random()*100)+1;tries=0;log.textContent='';say('>>> I picked a number from 1 to 100.','hint')}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();var g=parseInt(i.value,10);i.value='';
+    if(isNaN(g)||g<1||g>100){say('ValueError: pick 1 to 100','hint');return}
+    tries++;say('guess = '+g,'you');
+    if(g<secret)say('Too low','hint');
+    else if(g>secret)say('Too high','hint');
+    else{say('Correct in '+tries+' attempts. New round started.','ok');setTimeout(start,1400)}
+  });
+  start();
+})();
+
+/* project explorer */
+(function(){
+  var P=[
+   {n:'Number guessing game',lv:'Day 1',t:['variables','loops','conditions'],d:'The classic first build. Thirty lines teach input, loops and the random module, and every upgrade adds a new idea.',c:'<span class="k">import</span> random\nsecret = random.randint(1, 100)\n<span class="k">while</span> True:\n    guess = int(input(<span class="s">"Guess: "</span>))\n    <span class="k">if</span> guess == secret:\n        <span class="k">break</span>'},
+   {n:'Expense tracker',lv:'Week 3',t:['functions','files','dictionaries'],d:'A tool you will actually use. Save entries to a file, summarise by category and warn when a limit is crossed.',c:'expenses = []\n<span class="k">def</span> add(amount, category):\n    expenses.append({<span class="s">"amt"</span>: amount, <span class="s">"cat"</span>: category})'},
+   {n:'File organiser',lv:'Week 3',t:['pathlib','automation','testing safely'],d:'Sort a messy downloads folder by file type. Test on a copy first, because bugs here move real files.',c:'<span class="k">from</span> pathlib <span class="k">import</span> Path\n<span class="k">for</span> f <span class="k">in</span> Path(<span class="s">"downloads"</span>).iterdir():\n    <span class="c"># move by f.suffix</span>'},
+   {n:'Data story',lv:'Week 6',t:['csv','pandas','matplotlib'],d:'Pick a public dataset such as Delhi air quality, ask one question and answer it with a chart and a short written summary.',c:'<span class="k">import</span> pandas <span class="k">as</span> pd\ndf = pd.read_csv(<span class="s">"aqi.csv"</span>)\ndf.groupby(<span class="s">"month"</span>)[<span class="s">"pm25"</span>].mean().plot(kind=<span class="s">"bar"</span>)'},
+   {n:'Weather API checker',lv:'Week 7',t:['requests','JSON','error handling'],d:'Ask for a city, call a free weather API and handle bad input and network failures gracefully.',c:'<span class="k">import</span> requests\nr = requests.get(url, timeout=10)\n<span class="k">if</span> r.ok:\n    print(r.json()[<span class="s">"main"</span>][<span class="s">"temp"</span>])'},
+   {n:'Flask web app',lv:'Week 8',t:['routes','templates','SQLite'],d:'Turn a script into a site: a notes app or link shortener. Deploy it and your portfolio gains a clickable link.',c:'<span class="k">from</span> flask <span class="k">import</span> Flask\napp = Flask(__name__)\n<span class="k">@app.route</span>(<span class="s">"/"</span>)\n<span class="k">def</span> home():\n    <span class="k">return</span> <span class="s">"Hello, portfolio!"</span>'},
+   {n:'Tkinter desktop app',lv:'Weekend',t:['GUI','events','standard library'],d:'Build a countdown timer or flashcard app. Windows and buttons teach event driven thinking and look great in demos.',c:'<span class="k">import</span> tkinter <span class="k">as</span> tk\nroot = tk.Tk()\ntk.Button(root, text=<span class="s">"Start"</span>).pack()\nroot.mainloop()'}
+  ];
+  var tabs=document.getElementById('tabs'),panel=document.getElementById('panel');
+  function show(k){
+    var p=P[k];
+    Array.prototype.forEach.call(tabs.children,function(b,j){b.setAttribute('aria-selected',j===k)});
+    panel.innerHTML='<h3></h3><div class="tags"></div><p></p><pre><code></code></pre>';
+    panel.querySelector('h3').textContent=p.n;
+    panel.querySelector('p').textContent=p.d;
+    panel.querySelector('code').innerHTML=p.c;
+    var tg=panel.querySelector('.tags');
+    var a=document.createElement('span');a.className='tag';a.textContent=p.lv;tg.appendChild(a);
+    p.t.forEach(function(x){var s=document.createElement('span');s.className='tag b';s.textContent=x;tg.appendChild(s)});
+  }
+  P.forEach(function(p,k){
+    var b=document.createElement('button');b.className='tab';b.setAttribute('role','tab');b.textContent=p.n;
+    b.addEventListener('click',function(){show(k)});tabs.appendChild(b);
+  });
+  show(0);
+})();
+
+/* plan tracker */
+(function(){
+  var W=[['Days 1 to 14','Tiny programs: calculator, converter, guessing game.'],
+         ['Days 15 to 35','Build the expense tracker and push it to GitHub with a README.'],
+         ['Days 36 to 50','One data project and one API project.'],
+         ['Days 51 to 60','Start a Flask app, polish READMEs, pin your best three repos.']];
+  var box=document.getElementById('weeks'),bar=document.getElementById('bar'),msg=document.getElementById('msg');
+  var saved=[];try{saved=JSON.parse(localStorage.getItem('pyplan')||'[]')}catch(e){}
+  var notes=['Pick a checkpoint and begin.','Good start. Keep it small.','Halfway. The hard part is behind you.','Almost there.','Portfolio ready. Time to share it.'];
+  function update(){
+    var n=box.querySelectorAll('input:checked').length;
+    bar.style.width=(n*25)+'%';msg.textContent=notes[n];
+    try{localStorage.setItem('pyplan',JSON.stringify(Array.prototype.map.call(box.querySelectorAll('input'),function(x){return x.checked})))}catch(e){}
+  }
+  W.forEach(function(w,k){
+    var l=document.createElement('label');l.className='week';
+    l.innerHTML='<input type="checkbox"><span class="chk" aria-hidden="true">&#10003;</span><h3></h3><p></p>';
+    l.querySelector('h3').textContent=w[0];l.querySelector('p').textContent=w[1];
+    var c=l.querySelector('input');c.checked=!!saved[k];c.addEventListener('change',update);
+    box.appendChild(l);
+  });
+  update();
+})();
+</script>
+</body>
+</html>
